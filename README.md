@@ -83,7 +83,7 @@ You can create the service account under `IAM` with the `Healthcare FHIR Resourc
 ![data](images/Service_account.png)
 
 Once your service account is created, you will need to create a .json key file. Store this file securely on your computer.
-![data](images/Service/credentials)
+![data](images/Service_credentials)
 
 Now, open the `3_query_data.py` file and update the following code
 ```
