@@ -85,7 +85,7 @@ You can create the service account under `IAM` with the `Healthcare FHIR Resourc
 Once your service account is created, you will need to create a .json key file. Store this file securely on your computer.
 ![data](images/Service_credentials.png)
 
-Now, open the `3_query_data.py` file and update the following code
+Now, open the **[3_query_data.py](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/code/3_query_data.py)** file and update the following code
 ```
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "<path to your credentials file?"
 
@@ -95,7 +95,7 @@ dataset_id = "<Healthcare Dataset id>"
 fhir_store_id = "<Healthcare FHIR Store id>"
 ```
 
-with this file configured, you can execute the file running `python3 3_query_data.py`. If you open up the `query_data_function.py` file, you see we are running the following query `family:exact=William` to search for patients with the last name William.
+with this file configured, you can execute the file running `python3 3_query_data.py`. If you open up the **[query_data_function.py](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/code/query_data_function.py)** file, you see we are running the following query `family:exact=William` to search for patients with the last name William.
 
 The following JSON is returned as a search result. The search returned the information for the patient Macy William
 ```
