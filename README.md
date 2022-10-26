@@ -11,7 +11,7 @@ In this tutorial, you will learn how to:
 Please **[install](https://cloud.google.com/sdk/docs/install)** and **[initialize](https://cloud.google.com/sdk/docs/initializing)** the gcloud CLI. We will use the CLI to create, manage, and destroy our healthcare datasets.
 
 ### 1. Setup the Cloud Healthcare API
-The code in the following section can be found in the **[create_infrastructure.sh](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/code/Create_infrastructure.sh)** script. Feel free to execute the entire script, or follow along section by section.
+The code in the following section can be found in the **[code/create_infrastructure.sh](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/code/1_create_infrastructure.sh)** script. Feel free to execute the entire script, or follow along section by section.
 
 
 The first step to using the Cloud Healthcare API is to setup a dataset, which acts as a centralized location for your healthcare data. The dataset can be configured as follows:
@@ -32,6 +32,33 @@ As a last step, let's ensure our FHIR store was setup correctly with the `list` 
 ```
 gcloud healthcare fhir-stores list --dataset=quickstartDataset
 ```
-![data](images/FHIR_Store.png)
+![data](images/FHIR_store.png)
 
 ### 2. Load data into a FHIR store
+The **[data/resources.ndjson](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/data/resources.ndjson)** file contains information on 10 sample patients following the **[Resource](https://console.cloud.google.com/healthcare/browser/locations/us-central1/datasets/quickstartDataset/fhirStores/quickstartFHIR/import?project=animated-surfer-340819)** content structure.
+
+All patients are structured in the following json format:
+```
+{"birthDate":"1970-01-01","gender":"female","id":"2938bb9e-1f16-429e-8d44-9508ab0e4151","name":[{"family":"Smith","given":["Darcy"],"use":"official"}],"resourceType":"Patient"}
+```
+
+I typically recommend working with small dummy data while you get the hand of the Healthcare API. As you become more comfortable, I'd recommend using **[Synthea](https://synthea.mitre.org/)** to generate synthetic healthcare data that more closely mimics your final production state.
+
+The code in the following section can be found in the **[code/2_load_data.sh](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/code/2_load_data.sh)** file. 
+
+As a prerequisite of loading our data into our FHIR store, we must first move the data to Cloud Storage, as follows:
+```
+gsutil cp data/resources.ndjson gs://<your GCS bucket>
+```
+
+With the data in Cloud Storage, we can now import into our FHIR store:
+```
+gcloud healthcare fhir-stores import gcs quickstartFHIR \
+	--gcs-uri=gs://<your GCS bucket> \
+	--dataset=quickstartDataset \
+	--content-structure=RESOURCE
+```
+
+If your import was successful, you should see a `complete...done` message in the log. A good way to double check. As a quick sanity check, it is a good idea to check your Patients in the FHIR viewer, and ensure they are correctly loaded.
+
+![data](images/FHIR_viewer.png)
