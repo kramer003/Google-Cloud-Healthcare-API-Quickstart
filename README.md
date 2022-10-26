@@ -62,3 +62,5 @@ gcloud healthcare fhir-stores import gcs quickstartFHIR \
 If your import was successful, you should see a `complete...done` message in the log. A good way to double check. As a quick sanity check, it is a good idea to check your Patients in the FHIR viewer, and ensure they are correctly loaded.
 
 ![data](images/FHIR_viewer.png)
+
+### 3. Retrieve data from a FHIR store
