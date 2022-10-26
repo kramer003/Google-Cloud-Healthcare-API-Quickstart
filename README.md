@@ -71,7 +71,7 @@ Let's start by running a simple query in our FHIR viewer. Let's search for patie
 You should see the following in the FHIR search:
 ![data](images/FHIR_search.png)
 
-Additionally, Google has a Python Client Library that you can  use to query the data
+Additionally, Google has a Python **[Client Library](https://cloud.google.com/python/references/libraries)** that you can  use to query the data
 
 ### 4.De-identify and purge customers
 When analyzing customer data, you may want to **[de-identify](https://cloud.google.com/healthcare-api/docs/concepts/de-identification#:~:text=De%2Didentification%20is%20the%20process,or%20otherwise%20obscure%20the%20data.)** the data so that individuals cannot be identified from the data. This clean, de-identified dataset is the first step in further analyses, such as dashboards and ML model training.
