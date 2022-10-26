@@ -64,3 +64,9 @@ If your import was successful, you should see a `complete...done` message in the
 ![data](images/FHIR_viewer.png)
 
 ### 3. Retrieve data from a FHIR store
+The simplest way to view your data is through a **[search](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-search)**. Note that a search becomes expensive as your data scales, most customers perform a **[read](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/read)** using an exact resource id.
+
+Let's start by running a simple query in our FHIR viewer. Let's search for patients with the last name "Baker" with the query `Patient?family:exact=Baker`
+
+You should see the following in the FHIR search:
+![data](images/FHIR_search.png)
