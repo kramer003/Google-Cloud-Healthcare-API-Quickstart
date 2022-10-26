@@ -19,7 +19,7 @@ The first step to using the Cloud Healthcare API is to setup a dataset, which ac
 gcloud healthcare datasets create quickstartDataset
 ```
 
-With the dataset created, we can now create one or more datastores within this dataset, designed to hold all different types of medical data, such as FHIR, DICOM and HIL7v2. To learn more about what types of data can be stored, view our **[data model](https://cloud.google.com/healthcare-api/docs/concepts/introduction#data_model)**
+With the dataset created, we can now create one or more datastores within this dataset, designed to hold all different types of medical data, such as FHIR, DICOM and HIL7v2. To learn more about what types of data can be stored, view our **[data model](https://cloud.google.com/healthcare-api/docs/concepts/introduction#data_model)**.
 
 In this case, we will be creating a sample FHIR store, as shown below:
 ```
@@ -32,7 +32,7 @@ As a last step, let's ensure our FHIR store was setup correctly with the `list` 
 ```
 gcloud healthcare fhir-stores list --dataset=quickstartDataset
 ```
-![data](images/FHIR_store.png)
+![data](images/FHIR_Store.png)
 
 ### 2. Load data into a FHIR store
 The **[data/resources.ndjson](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/data/resources.ndjson)** file contains information on 10 sample patients following the **[Resource](https://console.cloud.google.com/healthcare/browser/locations/us-central1/datasets/quickstartDataset/fhirStores/quickstartFHIR/import?project=animated-surfer-340819)** content structure.
