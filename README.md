@@ -1,10 +1,16 @@
 # Google Cloud Healthcare API Quickstart
 The following tutorial is a brief overview of how to setup and use Google's Cloud Healthcare API. To learn more, visit our **[documentation](https://cloud.google.com/healthcare-api)**
 
+In this tutorial, you will learn:
+1. Setup the Cloud Healthcare API
+2. Load data into a FHIR store
+3. Retrieve (query) data from a FHIR store
+4. De-identify and purge customer PII
+
 ### 0. Install Dependencies
 Please **[install](https://cloud.google.com/sdk/docs/install)** and **[initialize](https://cloud.google.com/sdk/docs/initializing)** the gcloud CLI. We will use the CLI to create, manage, and destroy our healthcare datasets.
 
-### 1. Setup Healthcare API
+### 1. Setup Cloud Healthcare API
 The code in the following section can be found in the **[create_infrastructure.sh](github.com/kramer003/https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/code/Create_infrastructure.sh)** script. Feel free to execute the entire script, or follow along section by section.
 
 
