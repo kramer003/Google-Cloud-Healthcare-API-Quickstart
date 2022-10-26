@@ -71,9 +71,38 @@ Let's start by running a simple query in our FHIR viewer. Let's search for patie
 You should see the following in the FHIR search:
 ![data](images/FHIR_search.png)
 
-Additionally, Google has a Python **[Client Library](https://cloud.google.com/python/references/libraries)** that you can  use to query the data
+Additionally, Google has a Python **[Client Library](https://cloud.google.com/python/references/libraries)** that you can use to query the data. 
 
-### 4.De-identify and purge customers
+You will first need to install the google-auth library with the following command
+```
+pip install google-auth
+```
+Next, we will need to create a **[service account](https://cloud.google.com/iam/docs/service-accounts)** to perform FHIR queries on our behalf. Service accounts should have only the minimum permissions to run the job. For production use cases, you should consider using **[Application Default Credentials](https://cloud.google.com/docs/authentication/provide-credentials-adc)** in order to protect your credentials.
+
+You can create the service account under `IAM` with the `Healthcare FHIR Resource Reader` permission
+![data](images/Service_account.png)
+
+Once your service account is created, you will need to create a .json key file. Store this file securely on your computer.
+![data](images/Service/credentials)
+
+Now, open the `3_query_data.py` file and update the following code
+```
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "<path to your credentials file?"
+
+project_id = "<your project name>"
+location = "<Healthcare Dataset Location>"
+dataset_id = "<Healthcare Dataset id>"
+fhir_store_id = "<Healthcare FHIR Store id>"
+```
+
+with this file configured, you can execute the file running `python3 3_query_data.py`. If you open up the `query_data_function.py` file, you see we are running the following query `family:exact=William` to search for patients with the last name William.
+
+The following JSON is returned as a search result. The search returned the information for the patient Macy William
+```
+{'birthDate': '1993-12-21', 'gender': 'female', 'id': '2938bb9e-1f16-429e-8d44-9508ab0e4153', 'meta': {'lastUpdated': '2022-10-26T17:04:25.584183+00:00', 'versionId': 'MTY2NjgwMzg2NTU4NDE4MzAwMA'}, 'name': [{'family': 'William', 'given': ['Macy'], 'use': 'official'}], 'resourceType': 'Patient'}
+```
+
+### 4. De-identify and purge customers
 When analyzing customer data, you may want to **[de-identify](https://cloud.google.com/healthcare-api/docs/concepts/de-identification#:~:text=De%2Didentification%20is%20the%20process,or%20otherwise%20obscure%20the%20data.)** the data so that individuals cannot be identified from the data. This clean, de-identified dataset is the first step in further analyses, such as dashboards and ML model training.
 
 Additionally, customers have a right to be forgotten with their healthcare data. You can use a **[resource-purge](https://cloud.google.com/healthcare-api/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores.fhir/Resource-purge)** to completely erase a FHIR resource. This purges both the current version and all previous historical versions. 

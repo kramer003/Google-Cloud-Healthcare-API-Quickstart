@@ -12,7 +12,7 @@ def search_resources_post(project_id, location, dataset_id, fhir_store_id):
     # Imports Python's built-in "os" module
     import json
     import os
-  
+    
     # Imports the google.auth.transport.requests transport
     from google.auth.transport import requests
 
