@@ -105,7 +105,7 @@ The following JSON is returned as a search result. The search returned the infor
 ### 4. De-identify and purge customers
 When analyzing customer data, you may want to **[de-identify](https://cloud.google.com/healthcare-api/docs/concepts/de-identification#:~:text=De%2Didentification%20is%20the%20process,or%20otherwise%20obscure%20the%20data.)** the data so that individuals cannot be identified from the data. This clean, de-identified dataset is the first step in further analyses, such as dashboards and ML model training.
 
-The file `4_identify.sh` talks through the steps to de-identify your dataset. You will first need to create a new dataset to hold your de-identified results. Don't forget to add your `project id` when running the deidentify command.
+The file **[4_deidentify.sh](https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/blob/main/code/4_deidentify.sh)** talks through the steps to de-identify your dataset. You will first need to create a new dataset to hold your de-identified results. Don't forget to add your `project id` when running the deidentify command.
 
 Additionally, customers have a right to be forgotten with their healthcare data. You can use a **[resource-purge](https://cloud.google.com/healthcare-api/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores.fhir/Resource-purge)** to completely erase a FHIR resource. This purges both the current version and all previous historical versions. 
 
