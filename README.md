@@ -70,3 +70,14 @@ Let's start by running a simple query in our FHIR viewer. Let's search for patie
 
 You should see the following in the FHIR search:
 ![data](images/FHIR_search.png)
+
+
+### 4.De-identify and purge customers
+When analyzing customer data, you may want to **[de-identify](https://cloud.google.com/healthcare-api/docs/concepts/de-identification#:~:text=De%2Didentification%20is%20the%20process,or%20otherwise%20obscure%20the%20data.)** the data so that individuals cannot be identified from the data. This clean, de-identified dataset is the first step in further analyses, such as dashboards and ML model training.
+
+Additionally, customers have a right to be forgotten with their healthcare data. You can use a **[resource-purge](https://cloud.google.com/healthcare-api/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores.fhir/Resource-purge)** to completely erase a FHIR resource. This purges both the current version and all previous historical versions. 
+
+Note that running a **[delete](https://cloud.google.com/healthcare-api/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores.fhir/delete)** only deletes the current version of the record, and not any previous versions.
+
+### Conclusion
+This quick guide helps you get up and running with the Google Cloud Healthcare API using FHIR stores. To learn more, including how to use DICOM and HL7v2, check out our additional **[how-to](https://cloud.google.com/healthcare-api/docs/how-tos)** guides
