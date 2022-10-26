@@ -5,7 +5,7 @@ The following tutorial is a brief overview of how to setup and use Google's Clou
 Please **[install](https://cloud.google.com/sdk/docs/install)** and **[initialize](https://cloud.google.com/sdk/docs/initializing)** the gcloud CLI. We will use the CLI to create, manage, and destroy our healthcare datasets.
 
 ### 1. Setup Healthcare API
-The code in the following section can be found in the create_infrastructure.sh script. Feel free to execute the entire script, or follow along section by section.
+The code in the following section can be found in the **[create_infrastructure.sh](github.com/kramer003/https://github.com/kramer003/Google-Cloud-Healthcare-API-Quickstart/code/Create_infrastructure.sh)** script. Feel free to execute the entire script, or follow along section by section.
 
 
 The first step to using the Cloud Healthcare API is to setup a dataset, which acts as a centralized location for your healthcare data. The dataset can be configured as follows:
@@ -21,3 +21,11 @@ gcloud healthcare fhir-stores create quickstartFHIR \
 	--version=r4 \
 	--dataset=quickstartDataset
 ```
+
+As a last step, let's ensure our FHIR store was setup correctly with the `list` command
+```
+gcloud healthcare fhir-stores list --dataset=quickstartDataset
+```
+![data](images/FHIR_Store.png)
+
+#### 2. Load data into FHIR store
