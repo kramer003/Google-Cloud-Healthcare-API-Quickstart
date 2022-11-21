@@ -33,7 +33,10 @@ As a last step, let's ensure our FHIR store was setup correctly with the `list` 
 gcloud healthcare fhir-stores list \
 	--dataset=quickstartDataset
 ```
-![data](images/FHIR_Store.png)
+```
+ID: quickstartFHIR
+LOCATION: us-central1
+```
 
 ### 2. Load data into a FHIR store
 The **[Synthetic Data](https://synthetichealth.github.io/synthea-sample-data/downloads/synthea_sample_data_fhir_r4_sep2019.zip)** zip file contains information on 1000 sample patients following the **[Resource Bundle](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-bundles)** content structure.
