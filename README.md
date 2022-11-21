@@ -26,8 +26,6 @@ In this case, we will be creating a sample FHIR store, as shown below:
 gcloud healthcare fhir-stores create quickstartFHIR \
 	--version=r4 \
 	--dataset=quickstartDataset
-ID: quickstartFHIR
-LOCATION: us-central1
 ```
 
 As a last step, let's ensure our FHIR store was setup correctly with the `list` command
