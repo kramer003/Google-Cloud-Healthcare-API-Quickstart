@@ -76,9 +76,9 @@ gsutil -m cp -r fhir gs://<your GCS bucket>
 With the data in Cloud Storage, we can now import into our FHIR store:
 ```
 gcloud healthcare fhir-stores import gcs quickstartFHIR \
-	--gcs-uri=gs://<your GCS bucket> \
+	--gcs-uri=gs://<your GCS bucket>/fhir/* \
 	--dataset=quickstartDataset \
-	--content-structure=RESOURCE
+	--content-structure=bundle-pretty
 ```
 
 If your import was successful, you should see a `complete...done` message in the log. A good way to double check. As a quick sanity check, it is a good idea to check your Patients in the FHIR viewer, and ensure they are correctly loaded.
